@@ -9,50 +9,46 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let nameLogoView = NameLogoView()
-    let userLabel = UILabel()
-    let userTextField = UITextField()
-    let senhaLabel = UILabel()
-    let senhaTextField = UITextField()
+    var nameLogoView: NameLogoView!
+    var userLabel: UILabel!
+    var userTextField: UITextField!
+    var senhaLabel: UILabel!
+    var senhaTextField: UITextField!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       // setup()
-
+        view.backgroundColor = .white
+        setup()
     }
     
     func setup() {
-        setupNameImageView()
+        //setupNameImageView()
         setupUserLabel()
     }
     
     private func setupNameImageView() {
-        view.addSubview(nameLogoView)
+        nameLogoView = NameLogoView()
         nameLogoView.backgroundColor = .yellow
         nameLogoView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+        view.addSubview(nameLogoView)
         NSLayoutConstraint.activate([
-            nameLogoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16.0),
-            nameLogoView.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16.0),
-
-            
+            nameLogoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameLogoView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
     private func setupUserLabel() {
-        view.addSubview(userLabel)
+        userLabel = UILabel()
         userLabel.textColor = .black
         userLabel.text = "Nome"
-    
         userLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        view.addSubview(userLabel)
         
         NSLayoutConstraint.activate([
-            userLabel.topAnchor.constraint(equalTo: nameLogoView.bottomAnchor, constant: 16.0),
-            userLabel.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16.0)
-                                        ])
+            userLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
     }
 
