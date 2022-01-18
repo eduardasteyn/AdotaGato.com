@@ -12,7 +12,8 @@
 		83596F81275BFC6B0024CE5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83596F80275BFC6B0024CE5D /* LoginViewController.swift */; };
 		83596F87275BFC6B0024CE5D /* AdotaGato_com.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83596F85275BFC6B0024CE5D /* AdotaGato_com.xcdatamodeld */; };
 		83596F89275BFC6C0024CE5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83596F88275BFC6C0024CE5D /* Assets.xcassets */; };
-		83596F98275BFD0E0024CE5D /* NameLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83596F97275BFD0E0024CE5D /* NameLogoView.swift */; };
+		83596F98275BFD0E0024CE5D /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83596F97275BFD0E0024CE5D /* LogoView.swift */; };
+		F5EDFBB327738F9400260772 /* Gato.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EDFBB227738F9400260772 /* Gato.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,8 @@
 		83596F86275BFC6B0024CE5D /* AdotaGato_com.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AdotaGato_com.xcdatamodel; sourceTree = "<group>"; };
 		83596F88275BFC6C0024CE5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83596F8D275BFC6C0024CE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83596F97275BFD0E0024CE5D /* NameLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameLogoView.swift; sourceTree = "<group>"; };
+		83596F97275BFD0E0024CE5D /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		F5EDFBB227738F9400260772 /* Gato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gato.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,32 @@
 		83596F7B275BFC6B0024CE5D /* AdotaGato.com */ = {
 			isa = PBXGroup;
 			children = (
+				F5EDFBB127738F3700260772 /* Models */,
+				F5E58F342761234B00B3C037 /* Views */,
 				83596F7C275BFC6B0024CE5D /* AppDelegate.swift */,
 				83596F7E275BFC6B0024CE5D /* SceneDelegate.swift */,
-				83596F97275BFD0E0024CE5D /* NameLogoView.swift */,
-				83596F80275BFC6B0024CE5D /* LoginViewController.swift */,
 				83596F88275BFC6C0024CE5D /* Assets.xcassets */,
 				83596F8D275BFC6C0024CE5D /* Info.plist */,
 				83596F85275BFC6B0024CE5D /* AdotaGato_com.xcdatamodeld */,
 			);
 			path = AdotaGato.com;
+			sourceTree = "<group>";
+		};
+		F5E58F342761234B00B3C037 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83596F97275BFD0E0024CE5D /* LogoView.swift */,
+				83596F80275BFC6B0024CE5D /* LoginViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5EDFBB127738F3700260772 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5EDFBB227738F9400260772 /* Gato.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				83596F87275BFC6B0024CE5D /* AdotaGato_com.xcdatamodeld in Sources */,
-				83596F98275BFD0E0024CE5D /* NameLogoView.swift in Sources */,
+				83596F98275BFD0E0024CE5D /* LogoView.swift in Sources */,
 				83596F81275BFC6B0024CE5D /* LoginViewController.swift in Sources */,
 				83596F7D275BFC6B0024CE5D /* AppDelegate.swift in Sources */,
+				F5EDFBB327738F9400260772 /* Gato.swift in Sources */,
 				83596F7F275BFC6B0024CE5D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,13 +288,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QQD6B2UWQ8;
+				DEVELOPMENT_TEAM = 7DUB449Z92;
 				INFOPLIST_FILE = AdotaGato.com/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "BRG.AdotaGato-com";
+				PRODUCT_BUNDLE_IDENTIFIER = BRG.AdotaGato.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -287,13 +307,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QQD6B2UWQ8;
+				DEVELOPMENT_TEAM = 7DUB449Z92;
 				INFOPLIST_FILE = AdotaGato.com/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "BRG.AdotaGato-com";
+				PRODUCT_BUNDLE_IDENTIFIER = BRG.AdotaGato.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
