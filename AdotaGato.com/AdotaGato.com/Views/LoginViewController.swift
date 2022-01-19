@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     let userTextField = UITextField()
     let senhaLabel = UILabel()
     let senhaTextField = UITextField()
+    let enviarButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,42 +22,94 @@ class LoginViewController: UIViewController {
         setup()
     }
     
-    func setup() {
-        setupNameLogoView()
+    private func setup() {
+        setupLogoView()
         setupUserLabel()
+        setupUserTextField()
+        setupSenhaLabel()
+        setupSenhaTextField()
+        setupEnviarButton()
     }
     
-    private func setupNameLogoView() {
+    private func setupLogoView() {
         view.addSubview(logoView)
         logoView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            logoView.topAnchor.constraint(equalTo: view.topAnchor),
-            logoView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        ])
+        logoView.backgroundColor = .red
         
-     /* let widthConstraint = NSLayoutConstraint(item: nameLogoView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        let heightConstraint = NSLayoutConstraint(item: nameLogoView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        NSLayoutConstraint.activate([widthConstraint, heightConstraint]) */
+        NSLayoutConstraint.activate([
+            logoView.heightAnchor.constraint(equalToConstant: 200),
+            logoView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            logoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: logoView.trailingAnchor, constant: 16)
+        ])
     }
     
     private func setupUserLabel() {
         view.addSubview(userLabel)
-        userLabel.backgroundColor = .green
+        userLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         userLabel.textColor = .black
         userLabel.text = "Nome"
-        
-        userLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             userLabel.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 16),
             userLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
-        /* let horizontalConstraint = NSLayoutConstraint(item: userLabel, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: userLabel, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-        let widthConstraint = NSLayoutConstraint(item: userLabel, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        let heightConstraint = NSLayoutConstraint(item: userLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 100)
-        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint]) */
     }
     
+    private func setupUserTextField() {
+        view.addSubview(userTextField)
+        userTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        userTextField.borderStyle = .line
+        
+        NSLayoutConstraint.activate([
+            userTextField.topAnchor.constraint(equalTo: userLabel.bottomAnchor, constant: 16),
+            userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: userTextField.trailingAnchor, constant: 16)
+        ])
+    }
+    
+    private func setupSenhaLabel() {
+        view.addSubview(senhaLabel)
+        senhaLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        senhaLabel.textColor = .black
+        senhaLabel.text = "Senha"
+        
+        NSLayoutConstraint.activate([
+            senhaLabel.topAnchor.constraint(equalTo: userTextField.bottomAnchor, constant: 16),
+            senhaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+        ])
+    }
+    
+    private func setupSenhaTextField() {
+        view.addSubview(senhaTextField)
+        senhaTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        senhaTextField.borderStyle = .line
+        
+        NSLayoutConstraint.activate([
+            senhaTextField.topAnchor.constraint(equalTo: senhaLabel.bottomAnchor, constant: 16),
+            senhaTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: senhaTextField.trailingAnchor, constant: 16)
+        ])
+    }
+    
+    private func setupEnviarButton() {
+        view.addSubview(enviarButton)
+        enviarButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        enviarButton.setTitle("Login", for: .normal)
+        enviarButton.setTitleColor(.red, for: .normal)
+        
+        NSLayoutConstraint.activate([
+            enviarButton.heightAnchor.constraint(equalToConstant: 20),
+            enviarButton.widthAnchor.constraint(equalToConstant: 20),
+            enviarButton.topAnchor.constraint(equalTo: senhaTextField.bottomAnchor, constant: 16),
+            enviarButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: enviarButton.trailingAnchor, constant: 16)
+        ])
+    }
 }

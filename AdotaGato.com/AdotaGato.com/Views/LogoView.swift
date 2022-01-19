@@ -9,6 +9,7 @@ import UIKit
 
 class LogoView: UIView {
     
+    let contentView = UIView()
     var nameLogoLabel = UILabel()
     var logoImage = UIImageView()
     
@@ -22,32 +23,43 @@ class LogoView: UIView {
         self.setup()
     }
     
+    private func setupContentView() {
+        self.addSubview(contentView)
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: self.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+        ])
+    }
+    
     private func setup() {
+        setupContentView()
         setLogoImage()
         setupNameLogoLabel()
     }
     
-    private func setupNameLogoLabel() {
-        nameLogoLabel.textColor = .black
-        nameLogoLabel.font = UIFont.boldSystemFont(ofSize: 2.0)
-        nameLogoLabel.text = "adota gato"
-        self.addSubview(nameLogoLabel)
+    private func setLogoImage() {
+        logoImage.image = UIImage(named:"adotaGatoLogo")
+        contentView.addSubview(logoImage)
+        
+        logoImage.contentMode = .scaleAspectFill
         
         NSLayoutConstraint.activate([
-            nameLogoLabel.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 16),
-            nameLogoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+            logoImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            logoImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         ])
     }
     
-    private func setLogoImage() {
-        logoImage.image = UIImage(named:"adotaGatoLogo")
-        self.addSubview(logoImage)
+    private func setupNameLogoLabel() {
+        nameLogoLabel.textColor = .black
+        nameLogoLabel.text = "adota gato"
+        nameLogoLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        contentView.addSubview(nameLogoLabel)
         
-        logoImage.sizeThatFits(CGSize(width: 100, height: 100))
-        
-        NSLayoutConstraint.activate([
-            logoImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            logoImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+         NSLayoutConstraint.activate([
+            nameLogoLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            nameLogoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
     }
+
 }
