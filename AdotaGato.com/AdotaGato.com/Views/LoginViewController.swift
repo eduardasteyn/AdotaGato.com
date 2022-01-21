@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     let userTextField = UITextField()
     let senhaLabel = UILabel()
     let senhaTextField = UITextField()
-    let enviarButton = UIButton()
+    let loginButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
         setupUserTextField()
         setupSenhaLabel()
         setupSenhaTextField()
-        setupEnviarButton()
+        setupLoginButton()
     }
     
     private func setupLogoView() {
@@ -89,6 +89,7 @@ class LoginViewController: UIViewController {
         senhaTextField.translatesAutoresizingMaskIntoConstraints = false
 
         senhaTextField.borderStyle = .line
+        senhaTextField.isSecureTextEntry = true
         
         NSLayoutConstraint.activate([
             senhaTextField.topAnchor.constraint(equalTo: senhaLabel.bottomAnchor, constant: 16),
@@ -97,19 +98,27 @@ class LoginViewController: UIViewController {
         ])
     }
     
-    private func setupEnviarButton() {
-        view.addSubview(enviarButton)
-        enviarButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setupLoginButton() {
+        view.addSubview(loginButton)
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
         
-        enviarButton.setTitle("Login", for: .normal)
-        enviarButton.setTitleColor(.red, for: .normal)
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(.black, for: .normal)
+        
+        loginButton.layer.borderColor = UIColor.black.cgColor
+        loginButton.layer.borderWidth = 1
+        
+        loginButton.addTarget(self, action: #selector(abrirHome), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            enviarButton.heightAnchor.constraint(equalToConstant: 20),
-            enviarButton.widthAnchor.constraint(equalToConstant: 20),
-            enviarButton.topAnchor.constraint(equalTo: senhaTextField.bottomAnchor, constant: 16),
-            enviarButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            view.trailingAnchor.constraint(equalTo: enviarButton.trailingAnchor, constant: 16)
+            loginButton.topAnchor.constraint(equalTo: senhaTextField.bottomAnchor, constant: 32),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor, constant: 16)
         ])
+    }
+    
+    @objc func abrirHome() {
+        let home = TabBarViewController()
+        present(home, animated: true, completion: nil)
     }
 }
