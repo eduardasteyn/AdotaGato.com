@@ -18,6 +18,9 @@
 		F5C15869279DB25C00FCD773 /* AcompanhamentoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C15865279DB25C00FCD773 /* AcompanhamentoViewController.swift */; };
 		F5C1586A279DB25C00FCD773 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C15866279DB25C00FCD773 /* TabBarViewController.swift */; };
 		F5EDFBB327738F9400260772 /* Gato.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EDFBB227738F9400260772 /* Gato.swift */; };
+		F5F1453827A1FD9E00A32CD9 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1453727A1FD9E00A32CD9 /* PickerView.swift */; };
+		F5F1453A27A2029900A32CD9 /* CadastroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1453927A2029900A32CD9 /* CadastroViewModel.swift */; };
+		F5F1453C27A20BD500A32CD9 /* Raca.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1453B27A20BD500A32CD9 /* Raca.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		F5C15865279DB25C00FCD773 /* AcompanhamentoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcompanhamentoViewController.swift; sourceTree = "<group>"; };
 		F5C15866279DB25C00FCD773 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F5EDFBB227738F9400260772 /* Gato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gato.swift; sourceTree = "<group>"; };
+		F5F1453727A1FD9E00A32CD9 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		F5F1453927A2029900A32CD9 /* CadastroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewModel.swift; sourceTree = "<group>"; };
+		F5F1453B27A20BD500A32CD9 /* Raca.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raca.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +86,14 @@
 		F5E58F342761234B00B3C037 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5F1453727A1FD9E00A32CD9 /* PickerView.swift */,
 				F5C15865279DB25C00FCD773 /* AcompanhamentoViewController.swift */,
 				F5C15864279DB25C00FCD773 /* CadastroViewController.swift */,
 				F5C15863279DB25C00FCD773 /* DisponiveisViewController.swift */,
 				F5C15866279DB25C00FCD773 /* TabBarViewController.swift */,
 				83596F97275BFD0E0024CE5D /* LogoView.swift */,
 				83596F80275BFC6B0024CE5D /* LoginViewController.swift */,
+				F5F1453927A2029900A32CD9 /* CadastroViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -94,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				F5EDFBB227738F9400260772 /* Gato.swift */,
+				F5F1453B27A20BD500A32CD9 /* Raca.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,9 +180,12 @@
 				F5C15869279DB25C00FCD773 /* AcompanhamentoViewController.swift in Sources */,
 				83596F98275BFD0E0024CE5D /* LogoView.swift in Sources */,
 				83596F81275BFC6B0024CE5D /* LoginViewController.swift in Sources */,
+				F5F1453827A1FD9E00A32CD9 /* PickerView.swift in Sources */,
 				83596F7D275BFC6B0024CE5D /* AppDelegate.swift in Sources */,
+				F5F1453A27A2029900A32CD9 /* CadastroViewModel.swift in Sources */,
 				F5EDFBB327738F9400260772 /* Gato.swift in Sources */,
 				83596F7F275BFC6B0024CE5D /* SceneDelegate.swift in Sources */,
+				F5F1453C27A20BD500A32CD9 /* Raca.swift in Sources */,
 				F5C1586A279DB25C00FCD773 /* TabBarViewController.swift in Sources */,
 				F5C15868279DB25C00FCD773 /* CadastroViewController.swift in Sources */,
 			);

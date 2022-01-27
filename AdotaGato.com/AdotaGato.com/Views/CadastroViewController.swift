@@ -15,14 +15,17 @@ class CadastroViewController: UIViewController {
     let idadeLabel = UILabel()
     let idadeTextField = UITextField()
     let isVacinadoLabel = UILabel()
-    let isVacinadoPickerView = UIPickerView()
     let isVacinadoTextField = UITextField()
     let sexoLabel = UILabel()
-    let sexoPickerView = UITextField()
+    let sexoTextField = UITextField()
     let racaLabel = UILabel()
-    let racaPickerView = UITextField()
+    let racaTextField = UITextField()
     let imagemLabel = UILabel()
     let imagemButton = UIButton()
+    let arrayIsVacinado = ["Sim", "Não"]
+    let arraySexo = ["Macho", "Fêmea"]
+    var arrayRacas: [Raca]?
+    let pickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +39,17 @@ class CadastroViewController: UIViewController {
         setupNomeTextField()
         setupIdadeLabel()
         setupIdadeTextField()
-        
         setupIsVacinadoLabel()
         setupIsVacinadoTextField()
-        setupIsVacinadoPickerView()
-        
         setupSexoLabel()
+        setupSexoTextField()
         setupRacaLabel()
+        setupRacaTextField()
         setupImagemLabel()
         setupImagemButton()
+        
+        setupPickerView()
+        initArrayRacas()
     }
     
     private func setupNomeLabel() {
@@ -129,11 +134,10 @@ class CadastroViewController: UIViewController {
         ])
     }
     
-    private func setupIsVacinadoPickerView() {
-        isVacinadoPickerView.delegate = self
-        isVacinadoPickerView.dataSource = self
-        isVacinadoPickerView.backgroundColor = .white
-        isVacinadoPickerView.showsSelectionIndicator = true
+    private func setupPickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.backgroundColor = .white
     }
     
     private func setupSexoLabel() {
@@ -150,6 +154,20 @@ class CadastroViewController: UIViewController {
         ])
     }
     
+    private func setupSexoTextField() {
+        view.addSubview(sexoTextField)
+        sexoTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        sexoTextField.delegate = self
+        sexoTextField.borderStyle = .line
+        
+        NSLayoutConstraint.activate([
+            sexoTextField.topAnchor.constraint(equalTo: sexoLabel.bottomAnchor, constant: 16),
+            sexoTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: sexoTextField.trailingAnchor, constant: 16)
+        ])
+    }
+    
     private func setupRacaLabel() {
         view.addSubview(racaLabel)
         racaLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -158,9 +176,23 @@ class CadastroViewController: UIViewController {
         racaLabel.textColor = .black
         
         NSLayoutConstraint.activate([
-            racaLabel.topAnchor.constraint(equalTo: sexoLabel.bottomAnchor, constant: 16),
+            racaLabel.topAnchor.constraint(equalTo: sexoTextField.bottomAnchor, constant: 16),
             racaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             view.trailingAnchor.constraint(equalTo: racaLabel.trailingAnchor, constant: 16)
+        ])
+    }
+    
+    private func setupRacaTextField() {
+        view.addSubview(racaTextField)
+        racaTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        racaTextField.delegate = self
+        racaTextField.borderStyle = .line
+        
+        NSLayoutConstraint.activate([
+            racaTextField.topAnchor.constraint(equalTo: racaLabel.bottomAnchor, constant: 16),
+            racaTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            view.trailingAnchor.constraint(equalTo: racaTextField.trailingAnchor, constant: 16)
         ])
     }
     
@@ -172,7 +204,7 @@ class CadastroViewController: UIViewController {
         imagemLabel.textColor = .black
         
         NSLayoutConstraint.activate([
-            imagemLabel.topAnchor.constraint(equalTo: racaLabel.bottomAnchor, constant: 16),
+            imagemLabel.topAnchor.constraint(equalTo: racaTextField.bottomAnchor, constant: 16),
             imagemLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             view.trailingAnchor.constraint(equalTo: imagemLabel.trailingAnchor, constant: 16)
         ])
@@ -195,6 +227,11 @@ class CadastroViewController: UIViewController {
         ])
     }
     
+    private func initArrayRacas() {
+        CadastroViewModel().requestGatos { [weak self] (racas) in
+              self?.arrayRacas = racas
+            }
+    }
 }
 
 extension CadastroViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -204,13 +241,25 @@ extension CadastroViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        if racaTextField.isFirstResponder {
+            return 999
+        } else {
+            return 2
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let array = ["Sim", "Não"]
-        let titlePicker = array[row]
-        isVacinadoTextField.text = titlePicker
+        var titlePicker: String = ""
+        if isVacinadoTextField.isFirstResponder {
+            titlePicker = arrayIsVacinado[row]
+            isVacinadoTextField.text = titlePicker
+        } else if sexoTextField.isFirstResponder {
+            titlePicker = arraySexo[row]
+            sexoTextField.text = titlePicker
+        } else if racaTextField.isFirstResponder {
+            titlePicker = arrayRacas?[row].name ?? ""
+            racaTextField.text = titlePicker
+        }
         return titlePicker
     }
     
@@ -219,8 +268,8 @@ extension CadastroViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension CadastroViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.inputView = isVacinadoPickerView
-        isVacinadoPickerView.reloadAllComponents()
+        textField.inputView = pickerView
+        pickerView.reloadAllComponents()
         return true
     }
     

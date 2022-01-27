@@ -7,8 +7,20 @@
 
 import UIKit
 
-class PickerView: UIView {
-
-    private var pickerView = UIPickerView()
+class PickerView: UIPickerView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setup()
+    }
+    
+    private func setup() {
+        
+    }
  
 }
